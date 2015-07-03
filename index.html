@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+  <title>Interlude Demo</title>
+  
+  <!-- css reset -->
+  <style>
+    html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}abbr,acronym{border:0;}
+  </style>
+
+  <style>
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #thebutton {
+      height: 236px;
+      width: 514px;
+      overflow-x: hidden;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
+    #thebutton > * {
+      position: absolute;
+    }
+
+    /* needs to animate */
+    #thebutton.start > #thecircle {
+      animation: pop-in 120ms ease-in 1s both;
+    }
+
+    #thebutton.start > #thecat {
+      animation: pop-in 120ms ease-in 1060ms both;
+    }
+
+    #thebutton.start > #thetext {
+      animation: pull-out 240ms ease-in 1680ms both;
+    }
+
+    #thebutton.start > #thearrow {
+      animation: pop-in 240ms ease-in 1680ms both;
+    }
+
+    #thebutton.hover > #thearrow {
+      animation: bounce 480ms ease-in-out infinite forwards;
+    }
+
+    #thebutton.click > #thecircle,
+    #thebutton.click > #thecat {
+      animation: pop-out 120ms ease-out forwards;
+    }
+
+    #thebutton.click > #thetext {
+      animation: pull-in 180ms ease-out 60ms forwards;
+    }
+
+    #thebutton.click > #thearrow {
+      animation: pop-out 180ms ease-out 60ms forwards;
+    }
+
+    @-webkit-keyframes pop-in {
+      0% { 
+        transform: scale(0,0) translateX(-151px);
+      }
+      100% { 
+        transform: scale(1,1) translateX(0);
+      }
+    }
+
+    @-webkit-keyframes pop-out {
+      0% { 
+        transform: scale(1,1) translateX(0);
+      }
+      100% { 
+        transform: scale(0,0) translateX(-151px);
+      }
+    }
+
+    @-webkit-keyframes pull-out {
+      0% { 
+        left: -514px;
+      }
+      100% { 
+        left: 0;
+      }
+    }
+
+    @-webkit-keyframes pull-in {
+      0% { 
+        left: 0;
+      }
+      100% { 
+        left: -514px;
+      }
+    }
+
+    @-webkit-keyframes bounce {
+      0% {
+        transform: translate(0,0);
+      }
+      50% {
+        transform: translate(24px,24px);
+      }
+      100% {
+        transform: translate(0,0);
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- unabashedly stolen from http://heyyeyaaeyaaaeyaeyaa.com/ -->
+  <object rel="media:video" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="100%" height="100%">
+      <param name="movie" value="http://heyyeyaaeyaaaeyaeyaa.com/hey.swf">
+      <param name="wmode" value="transparent">
+      <param name="quality" value="high">
+      <param name="SCALE" value="exactfit">
+      <param name="bgcolor" value="#000000">
+      <embed src="http://heyyeyaaeyaaaeyaeyaa.com/hey.swf" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100%" height="100%" scale="exactfit" bgcolor="#000000" wmode="transparent">
+  </object>
+
+  <!-- naive, use images -->
+  <div id="thebutton" class="start">
+    <img id="thetext" src="img/text.png" />
+    <img id="thecircle" src="img/circle.png" />
+    <img id="thecat" src="img/cat.png" />
+    <img id="thearrow" src="img/arrow.png" />  
+  </div>
+
+  <script>
+    var button = document.getElementById('thebutton');
+    button.addEventListener('click', onclick);
+    button.addEventListener('mouseover', onmouseover);
+    button.addEventListener('mouseleave', onmouseleave)
+
+    setTimeout(function() {
+      button.classList.remove('start');
+    }, 1920);
+
+    function onclick(ev) {
+      button.classList.add('click');
+    }
+
+    function onmouseover(ev) {
+      if (!button.classList.contains('start')) {
+        button.classList.add('hover');
+      }
+    }
+    function onmouseleave(ev) {
+      button.classList.remove('hover');
+    }
+  </script>
+
+</body>
+
+</html
