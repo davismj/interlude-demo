@@ -6,6 +6,8 @@
   <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
   <title>Interlude Demo</title>
   
+  <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+
   <!-- css reset -->
   <style>
     html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}abbr,acronym{border:0;}
@@ -31,6 +33,26 @@
 
     #thebutton > * {
       position: absolute;
+    }
+
+    #thebutton.hover { 
+      cursor: pointer;
+    }
+
+    #thebutton > #thetext {
+      font-family: 'Nunito', sans-serif;
+      background: white;
+      border: 8px solid black;
+      border-radius: 48px;
+      height: 133px;
+      width: 381px;
+      font-size: 50px;
+      line-height: 117px;
+      text-align: right;
+      top: 30px;
+      left: 130px;
+      padding-right: 24px;
+      box-sizing: border-box;
     }
 
     /* needs to animate */
@@ -114,7 +136,6 @@
         transform: translate(0,0);
       }
     }
-
   </style>
 
 </head>
@@ -133,7 +154,7 @@
 
   <!-- naive, use images -->
   <div id="thebutton" class="start">
-    <img id="thetext" src="img/text.png" />
+    <div id="thetext">Cat Lover</div>
     <img id="thecircle" src="img/circle.png" />
     <img id="thecat" src="img/cat.png" />
     <img id="thearrow" src="img/arrow.png" />  
